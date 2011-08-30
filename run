@@ -1,4 +1,9 @@
 #!/bin/sh
 
 lein uberjar
-./move $1
+echo expecting 4:
+./move '---------'
+echo expecting 2:
+./move '----0----'
+echo expecting 0:
+./move '--x-0----'

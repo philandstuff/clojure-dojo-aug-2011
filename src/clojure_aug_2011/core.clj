@@ -10,10 +10,7 @@
 
 (defn instant-horiz-win [board]
   (let [player (which-player board)
-	cells (seq board)
-	row1 (take 3 cells)
-	row2 (take 3 (drop 3 cells))
-	row3 (take 3 (drop 6 cells))]
+	ib (indexed-board board)]
     
 	))
 
