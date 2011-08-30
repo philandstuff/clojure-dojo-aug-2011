@@ -11,8 +11,13 @@
 (defn instant-win [board]
   (instant-horiz-win board))
 
+(defn which-player [board]
+  (let [xs (count (filter #(= \x %)))
+	os (count (filter #(= \0 %)))]
+    (if (= xs os) \0 \x)))
+
 (defn choice [board]
-  (cond ;;(instant-win board) (instant-win board)
+  (cond ;(instant-win board) (instant-win board)
 	(= \- (nth board 4)) 4
 	(= \- (nth board 0)) 0
 	(= \- (nth board 6)) 6
