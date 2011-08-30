@@ -3,10 +3,10 @@
 
 (defn choice [board]
   (cond (= \- (nth board 4)) 5
-	(= \- (nth board 0)) 0
-	(= \- (nth board 6)) 6
-	(= \- (nth board 2)) 2
-	(= \- (nth board 8)) 8
+	(= \- (nth board 0)) 1
+	(= \- (nth board 6)) 7
+	(= \- (nth board 2)) 3
+	(= \- (nth board 8)) 9
 	:else (inc (.indexOf board "-"))))
 
 (defn -main [prev]
