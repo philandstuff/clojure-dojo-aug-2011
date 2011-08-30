@@ -1,4 +1,4 @@
 #!/bin/sh
 
 lein uberjar
-./move 'O--------'
+./move $1
