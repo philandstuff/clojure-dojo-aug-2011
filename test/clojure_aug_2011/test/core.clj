@@ -2,5 +2,6 @@
   (:use [clojure-aug-2011.core] :reload)
   (:use [clojure.test]))
 
-(deftest replace-me ;; FIXME: write
-  (is false "No tests have been written."))
+(deftest test-which-player
+  (is (= \x (which-player "0--------")))
+	(is (= \0 (which-player "0-x------"))))
