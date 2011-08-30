@@ -1,4 +1,8 @@
 (ns clojure-aug-2011.core
   (:gen-class))
 
-(defn -main [] (println "rock"))
+(defn choice [board]
+  (inc (.indexOf board "-")))
+
+(defn -main [prev]
+  (println (choice prev)))

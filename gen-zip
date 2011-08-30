@@ -5,5 +5,6 @@ mkdir team4
 cp move clojure-aug-2011-1.0.0-SNAPSHOT-standalone.jar team4
 zip -r team4.zip team4
 
-curl http://172.6.0.249:3000/players --header 'Content-Type: application/octet-stream' --data-binary @team4.zip
+curl http://172.6.0.249:3030/players --header 'Content-Type: application/octet-stream' --data-binary @team4.zip
 
+git commit -am "Autocommit"
