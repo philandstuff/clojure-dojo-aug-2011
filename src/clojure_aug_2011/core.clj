@@ -6,28 +6,28 @@
 	os (count (filter #(= \0 %) board))]
     (if (= xs os) \0 \x)))
 
-(defn indexed-board [board] (vector (seq board)))
+(defn indexed-board [board] (vec board))
 
-#_(defn row-is-win [ib c1 c2 c3]
-  (let [player (which-player ib)
-	contents (map ib [c1 c2 c3])]
+(defn index-of-empty [indexed-board c1 c2 c3]
+  (first (filter #(= \- (indexed-board %)) [c1 c2 c3])))
+
+(defn row-is-win [indexed-board [c1 c2 c3]]
+  (let [player (which-player indexed-board)
+	row-contents (map indexed-board [c1 c2 c3])
+	]
     (when
 	(and
-	 (= 2 (count #(= player %) contents)
-	      )
-	 (= 1 (count #(= \- %) contents))))))
+	 (= 2 (count (filter #(= player %) row-contents)))
+	 (= 1 (count (filter #(= \- %) row-contents))))
+      (index-of-empty indexed-board c1 c2 c3))))
 
-#_(defn instant-horiz-win [board]
-  (let [player (which-player board)
-	ib (indexed-board board)]
-        (row-is-win ib 0 1 2)
-	))
+(def all-rows [[0 1 2] [3 4 5] [6 7 8] [0 3 6] [1 4 7] [2 5 8] [0 4 8] [2 4 6]])
 
-#_(defn instant-win [board]
-  (instant-horiz-win board))
+(defn instant-win [board]
+  (some (partial row-is-win (indexed-board board)) all-rows))
 
 (defn choice [board]
-  (cond ;(instant-win board) (instant-win board)
+  (cond (instant-win board) (instant-win board)
 	(= \- (nth board 4)) 4
 	(= \- (nth board 2)) 2
 	(= \- (nth board 6)) 6
